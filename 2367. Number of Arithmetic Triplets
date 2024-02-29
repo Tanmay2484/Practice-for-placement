@@ -1,0 +1,20 @@
+2367. Number of Arithmetic Triplets
+Link:https://leetcode.com/problems/number-of-arithmetic-triplets/
+class Solution {
+public:
+    /*
+    We simply save the value for every we have seen till now in a array and our count will be cnt[A[i]]= cnt[A[i]-diff]+1 which is typical Dynamic Programming,
+that we exactly do in Longest Increasing subsequence.
+
+On the way get count for A[i]-diff Value and increase result if sequence length till this       number is >=3
+    */
+    
+    int arithmeticTriplets(vector<int>& nums, int diff) {
+        unordered_map<int,int>ans;
+        int countTriplets=0;
+        for(auto i=0;i<nums.size();i++){
+            if((ans[nums[i]]=ans[nums[i]-diff]+1)>=3) countTriplets++;
+        }
+        return countTriplets;
+    }
+};
